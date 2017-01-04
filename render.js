@@ -2,81 +2,12 @@ Array.prototype.flatMap = function(lambda) {
       return Array.prototype.concat.apply([], this.map(lambda)); 
 };
 
+//TODO: properly import and scope animation definitions
+
 var display = new ROT.Display({width:20, height:5});
-document.body.appendChild(display.getContainer()); /* do not forget to append to page! */
+document.body.appendChild(display.getContainer());
 
-
-const beat = [
-  {
-    duration: 100,
-    image: [
-      "    (\\_/)",
-      "(3  (oO )",
-      "    (> <)"
-    ]
-  },
-  {
-    duration: 100,
-    image: [
-      "    (\\_/)",
-      " (3 (oO )",
-      "    (> <)"
-    ]
-  },
-  {
-    loop: 3,
-    frames: [
-      {
-        duration: 100,
-        image: [
-          "    (\\_/)",
-          "  (3(oO )",
-          "    (> <)"
-        ]
-      },
-      {
-        duration: 100,
-        image: [
-          "    (\\_/)",
-          "   (3(oO )",
-          "    (> <)"
-        ]
-      },
-    ]
-  },
-  {
-    duration: 100,
-    image: [
-      "    (\\_/)",
-      "   (3(-- )",
-      "    (> <)"
-    ]
-  },
-  {
-    duration: 200,
-    image: [
-      "    (\\_/)",
-      "  (3(-- )",
-      "    (> <)"
-    ]
-  },
-  {
-    duration: 500,
-    image: [
-      "    (\\_/)",
-      "    (oO )",
-      "    (> <)"
-    ]
-  },
-  {
-    duration: 1000,
-    image: [
-      "            ",
-      "      (\\_/)",
-      "    (>(T-T)"
-    ]
-  },
-]
+animate(love);
 
 function flattenAnimation(frame){
   if(!frame.loop){
@@ -112,5 +43,3 @@ function drawFrames(frames, i){
 function animate(definition){
   drawFrames(definition.flatMap(flattenAnimation));
 }
-
-animate(beat);
