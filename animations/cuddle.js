@@ -3,7 +3,7 @@ const cuddle = [
     loop: 7,
     frames: [
       {
-        duration: 200,
+        duration: 300,
         image: [
 			"(\\_/)",
 			"(^-^)",
@@ -11,7 +11,7 @@ const cuddle = [
         ]
       },
       {
-        duration: 200,
+        duration: 300,
         image: [
 			"(\\/)",
 			"(^^)",

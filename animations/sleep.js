@@ -3,7 +3,7 @@ const sleep = [
     loop: 8,
     frames: [
       {
-        duration: 200,
+        duration: 300,
         image: [
 			"(\\_/) Z",
 			"(-_-)z",
@@ -11,7 +11,7 @@ const sleep = [
         ]
       },
       {
-        duration: 200,
+        duration: 300,
         image: [
 			"(\\_/) z",
 			"(-_-)Z",

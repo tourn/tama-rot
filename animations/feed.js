@@ -1,6 +1,7 @@
+const feed_duration = 300;
 const feed = [
 	{ 
-		duration: 300,
+		duration: feed_duration,
 		image: [
 			"(\\_/)",
 			"(O,o)",
@@ -8,7 +9,7 @@ const feed = [
 		]
 	},
 	{ 
-		duration: 300,
+		duration: feed_duration,
 		image: [
 			"(\\_/)",
 			"(O,o)",
@@ -16,7 +17,7 @@ const feed = [
 		]
 	},
 	{ 
-		duration: 300,
+		duration: feed_duration,
 		image: [
 			"(\\_/)",
 			"(O o)",
@@ -24,7 +25,7 @@ const feed = [
 		]
 	},
 	{ 
-		duration: 300,
+		duration: feed_duration,
 		image: [
 			"(\\_/)",
 			"(O o)",
@@ -32,7 +33,7 @@ const feed = [
 		]
 	},
 	{ 
-		duration: 300,
+		duration: feed_duration,
 		image: [
 			"(\\_/)",
 			"(O o)",
@@ -43,7 +44,7 @@ const feed = [
 		loop: 3,
 		frames: [
 			{
-				duration: 300,
+				duration: feed_duration,
 				image: [
 					"(\\_/)",
 					"(O,o)",
@@ -51,7 +52,7 @@ const feed = [
 				]
 			},
 			{
-				duration: 300,
+				duration: feed_duration,
 				image: [
 					"(\\_/)",
 					"(O.o)",

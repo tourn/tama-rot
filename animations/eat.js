@@ -3,7 +3,7 @@ const eat = [
     loop: 5,
     frames: [
       {
-        duration: 200,
+        duration: 300,
         image: [
 			" (\\_/)",
 			"-(O_o)-",
@@ -11,7 +11,7 @@ const eat = [
         ]
       },
 	  {
-        duration: 200,
+        duration: 300,
         image: [
 			"",
 			"-() ()-",
@@ -19,7 +19,7 @@ const eat = [
         ]
       },
       {
-        duration: 200,
+        duration: 300,
         image: [
 			" ( o ) ",
 			"-( _ )-",
@@ -27,7 +27,7 @@ const eat = [
         ]
       },
 	  {
-        duration: 200,
+        duration: 300,
         image: [
 			"",
 			"-() ()-",
