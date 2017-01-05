@@ -7,7 +7,7 @@ Array.prototype.flatMap = function(lambda) {
 var display = new ROT.Display({width:20, height:5});
 document.body.appendChild(display.getContainer());
 
-animate(spreng);
+animate(sleep);
 
 function flattenAnimation(frame){
   if(!frame.loop){
