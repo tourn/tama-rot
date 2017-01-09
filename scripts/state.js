@@ -28,9 +28,16 @@ define(['render', 'animations/animations'], function(render, animations){
     });
   }
 
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max) + 1;
+    return Math.floor(Math.random() * (max - min)) + min;
+  }
+
   function idleAnimation(){
-    const animation = animations.sleep; //TODO: choose randomly
-    render.animate(animation).then(idleAnimation).catch(function(){});
+    const animationName = "idle" + getRandomInt(1,2);
+    console.log(animationName);
+    render.animate(animations[animationName]).then(idleAnimation).catch(function(){});
   }
 
   function toAnimation(animationName){
