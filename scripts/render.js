@@ -5,7 +5,7 @@ Array.prototype.flatMap = function(lambda) {
 define(['rot','animations/animations'], function(ROT, animations){
   var timeout;
   var display = new ROT.Display({width:20, height:5});
-  document.body.appendChild(display.getContainer());
+  document.getElementById("display").appendChild(display.getContainer());
 
   function flattenAnimation(frame){
     if(!frame.loop){
@@ -30,19 +30,48 @@ define(['rot','animations/animations'], function(ROT, animations){
     }
   }
 
-  function drawFrames(frames, i){
+  function drawFrames(frames, i, resolve){
     i = i || 0;
-    if(i >= frames.length) { i = 0; };
+    if(i >= frames.length) {
+      resolve();
+      return;
+    };
     const frame = frames[i];
     drawImage(frame.image);
-    timeout = setTimeout(function(){ drawFrames(frames, i+1); }, frame.duration);
+    timeout = setTimeout(function(){ drawFrames(frames, i+1, resolve); }, frame.duration);
   }
 
   function animate(definition){
     if(timeout){ clearTimeout(timeout); }
-    drawFrames(definition.flatMap(flattenAnimation));
+    return new Promise(function(resolve, reject){
+      drawFrames(definition.flatMap(flattenAnimation), 0, resolve);
+    });
   }
 
-  return { animate: animate };
+  function renderState(state){
+    const target = document.getElementById('status');
+    target.innerHTML = "";
+    Object.keys(state).forEach(function(key){
+      target.innerHTML += "<p>" + key + ": " + state[key] + "</p>";
+    });
+  }
+
+  function renderCommands(commands){
+    const target = document.getElementById('control');
+    target.innerHTML = "";
+    Object.keys(commands).forEach(function(key){
+      const button = document.createElement("button");
+      button.innerHTML = key;
+      button.onclick = commands[key];
+      target.appendChild(button);
+    });
+
+  }
+
+  return {
+    animate: animate,
+    renderState: renderState,
+    renderCommands: renderCommands
+  };
 });
 
