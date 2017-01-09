@@ -1,22 +1,22 @@
 define(function(){
 const duration = 100;
 return [
-  { duration: duration, image: [
+  { duration: duration*4, image: [
     "(\\_/)   (\\_/)",
     "(>_>)   (<_<)",
     "(> <)   (> <)",
   ]},
-  { duration: duration, image: [
+  { duration: duration*3, image: [
     "(\\_/)  (\\_/)",
     "(>_>)  (<_<)",
     "(> <)  (> <)",
   ]},
-  { duration: duration, image: [
+  { duration: duration*2, image: [
     "(\\_/) (\\_/)",
     "(>_>) (<_<)",
     "(> <) (> <)",
   ]},
-  { duration: duration, image: [
+  { duration: duration*2, image: [
     "(\\_/)(\\_/)",
     "(>_>)(<_<)",
     "(> <)(> <)",
