@@ -1,24 +1,25 @@
-const cuddle = [
+define(function(){
+return [
   {
-    loop: 7,
+    loop: 8,
     frames: [
       {
         duration: 300,
         image: [
-			"(\\_/)",
-			"(^-^)",
+			"(\\_/) Z",
+			"(-_-)z",
 			"(> <)"
         ]
       },
       {
         duration: 300,
         image: [
-			"(\\/)",
-			"(^^)",
-			"(><)"
+			"(\\_/) z",
+			"(-_-)Z",
+			"(> <)"
         ]
       },
     ]
   },
 ]
-
+});

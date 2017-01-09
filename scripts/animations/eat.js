@@ -1,4 +1,5 @@
-const eat = [
+define(function(){
+return [
   {
     loop: 5,
     frames: [
@@ -37,4 +38,4 @@ const eat = [
     ]
   },
 ]
-
+});

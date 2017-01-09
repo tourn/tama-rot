@@ -1,5 +1,6 @@
+define(function(){
 const duration = 100;
-const love = [
+return [
   { duration: duration, image: [
     "(\\_/)   (\\_/)",
     "(>_>)   (<_<)",
@@ -173,3 +174,4 @@ const love = [
     "(> <) (> <)",
   ]},
 ];
+});

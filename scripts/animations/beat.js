@@ -1,4 +1,5 @@
-const beat = [
+define(function(){
+return [
   {
     duration: 100,
     image: [
@@ -69,4 +70,5 @@ const beat = [
     ]
   },
 ]
+});
 

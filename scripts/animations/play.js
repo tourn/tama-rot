@@ -1,5 +1,6 @@
+define(function(){
 const play_frame_duration = 200;
-const play = [
+return [
   {
     loop: 6,
     frames: [
@@ -46,4 +47,4 @@ const play = [
     ]
   },
 ]
-
+});

@@ -1,5 +1,6 @@
+define(function(){
 const spreng_duration = 300;
-const spreng = [
+return [
   { duration: spreng_duration, image: [
     " (\\_/)",
     " (O_o)",
@@ -71,3 +72,4 @@ const spreng = [
     "   _   __   x)",
   ]},
 ];
+});

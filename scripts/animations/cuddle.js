@@ -1,24 +1,25 @@
-const sleep = [
+define(function(){
+return [
   {
-    loop: 8,
+    loop: 7,
     frames: [
       {
         duration: 300,
         image: [
-			"(\\_/) Z",
-			"(-_-)z",
+			"(\\_/)",
+			"(^-^)",
 			"(> <)"
         ]
       },
       {
         duration: 300,
         image: [
-			"(\\_/) z",
-			"(-_-)Z",
-			"(> <)"
+			"(\\/)",
+			"(^^)",
+			"(><)"
         ]
       },
     ]
   },
 ]
-
+});
