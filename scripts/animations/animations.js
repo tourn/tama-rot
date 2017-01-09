@@ -6,6 +6,7 @@ define([
   './feed',
   './idle',
   './love',
+  './music',
   './play',
   './sleep',
   './spreng',
@@ -17,6 +18,7 @@ define([
   feed,
   idle,
   love,
+  music,
   play,
   sleep,
   spreng
@@ -29,6 +31,7 @@ define([
     feed: feed,
 	idle: idle,
     love: love,
+	music: music,
     play: play,
     sleep: sleep,
     spreng: spreng
