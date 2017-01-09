@@ -6,6 +6,6 @@ requirejs.config({
   }
 });
 
-requirejs(['state', 'render', 'animations/animations'], function(state, render, animations){
+requirejs(['state'], function(state, render, animations){
   state.init();
 });

@@ -1,4 +1,4 @@
-define(['render', 'animations/animations'], function(render, animations){
+define(['render'], function(render){
 
   //TODO: persist state
   var state = {
@@ -36,14 +36,13 @@ define(['render', 'animations/animations'], function(render, animations){
 
   function idleAnimation(){
     const animationName = "idle" + getRandomInt(1,2);
-    console.log(animationName);
-    render.animate(animations[animationName]).then(idleAnimation).catch(function(){});
+    render.animate(animationName).then(idleAnimation).catch(function(){});
   }
 
   function toAnimation(animationName){
     render.clearAnimation();
     render.clearCommands();
-    render.animate(animations[animationName]).then(toIdle).catch(function(){});
+    render.animate(animationName).then(toIdle).catch(function(){});
   }
 
   return {

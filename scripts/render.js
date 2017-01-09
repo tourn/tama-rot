@@ -43,7 +43,8 @@ define(['rot','animations/animations'], function(ROT, animations){
     timeout = setTimeout(function(){ drawFrames(frames, i+1, resolve); }, frame.duration);
   }
 
-  function animate(definition){
+  function animate(animationName){
+    const definition = animations[animationName];
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
       animationReject = reject;
