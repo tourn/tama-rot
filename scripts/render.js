@@ -3,7 +3,9 @@ Array.prototype.flatMap = function(lambda) {
 };
 
 define(['rot','animations/animations'], function(ROT, animations){
+  const id_controls = 'control';
   var timeout;
+  var animationReject;
   var display = new ROT.Display({width:20, height:5});
   document.getElementById("display").appendChild(display.getContainer());
 
@@ -44,8 +46,14 @@ define(['rot','animations/animations'], function(ROT, animations){
   function animate(definition){
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
+      animationReject = reject;
       drawFrames(definition.flatMap(flattenAnimation), 0, resolve);
     });
+  }
+
+  function clearAnimation(){
+    if(timeout){ clearTimeout(timeout); }
+    if(animationReject){ animationReject("animation cancelled"); }
   }
 
   function renderState(state){
@@ -57,7 +65,7 @@ define(['rot','animations/animations'], function(ROT, animations){
   }
 
   function renderCommands(commands){
-    const target = document.getElementById('control');
+    const target = document.getElementById(id_controls);
     target.innerHTML = "";
     Object.keys(commands).forEach(function(key){
       const button = document.createElement("button");
@@ -70,8 +78,10 @@ define(['rot','animations/animations'], function(ROT, animations){
 
   return {
     animate: animate,
+    clearAnimation: clearAnimation,
     renderState: renderState,
-    renderCommands: renderCommands
+    renderCommands: renderCommands,
+    clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; }
   };
 });
 

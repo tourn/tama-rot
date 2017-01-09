@@ -9,22 +9,34 @@ define(['render', 'animations/animations'], function(render, animations){
     state.satiety -= 10;
   }
 
+  function wait(){
+    tick();
+    toIdle();
+  }
+
   function feed(){
     state.satiety = 80;
     toAnimation('feed');
   }
 
   function toIdle(){
-    //TODO: draw idle animation
+    idleAnimation();
     render.renderState(state);
     render.renderCommands({
-      'feed': feed
+      'feed': feed,
+      'wait': wait
     });
   }
 
+  function idleAnimation(){
+    const animation = animations.sleep; //TODO: choose randomly
+    render.animate(animation).then(idleAnimation).catch(function(){});
+  }
+
   function toAnimation(animationName){
-    //TODO: take controls away
-    render.animate(animations[animationName]).then(toIdle);
+    render.clearAnimation();
+    render.clearCommands();
+    render.animate(animations[animationName]).then(toIdle).catch(function(){});
   }
 
   return {
