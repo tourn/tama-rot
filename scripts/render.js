@@ -2,20 +2,10 @@ Array.prototype.flatMap = function(lambda) {
       return Array.prototype.concat.apply([], this.map(lambda)); 
 };
 
-requirejs.config({
-  shim: {
-    'rot': {
-      exports: 'ROT'
-    }
-  }
-});
-requirejs(['rot','animations/animations'], function(ROT, animations){
-  console.log(animations);
-
+define(['rot','animations/animations'], function(ROT, animations){
+  var timeout;
   var display = new ROT.Display({width:20, height:5});
   document.body.appendChild(display.getContainer());
-
-  animate(animations.spreng);
 
   function flattenAnimation(frame){
     if(!frame.loop){
@@ -45,11 +35,14 @@ requirejs(['rot','animations/animations'], function(ROT, animations){
     if(i >= frames.length) { i = 0; };
     const frame = frames[i];
     drawImage(frame.image);
-    setTimeout(function(){ drawFrames(frames, i+1); }, frame.duration);
+    timeout = setTimeout(function(){ drawFrames(frames, i+1); }, frame.duration);
   }
 
   function animate(definition){
+    if(timeout){ clearTimeout(timeout); }
     drawFrames(definition.flatMap(flattenAnimation));
   }
+
+  return { animate: animate };
 });
 
