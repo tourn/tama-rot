@@ -5,8 +5,12 @@ define(['render'], function(render){
     satiety: 50
   };
 
-  function tick(){
+  function toTick(){
+    if(state.satiety > 100){
+      toExplode(); return;
+    }
     state.satiety -= 10;
+    toIdle();
   }
 
   function wait(){
@@ -15,11 +19,18 @@ define(['render'], function(render){
   }
 
   function feed(){
-    state.satiety = 80;
+    state.satiety += 40;
     toAnimation('feed');
   }
 
-  function toIdle(){
+  function toExplode(){
+    render.clearAnimation();
+    render.renderState(state);
+    render.animate("spreng").then(function(){}).catch(function(){});
+    render.clearCommands();
+  }
+
+  function toIdle(suppressTick){
     idleAnimation();
     render.renderState(state);
     render.renderCommands({
@@ -42,7 +53,7 @@ define(['render'], function(render){
   function toAnimation(animationName){
     render.clearAnimation();
     render.clearCommands();
-    render.animate(animationName).then(toIdle).catch(function(){});
+    render.animate(animationName).then(toTick).catch(function(){});
   }
 
   return {
