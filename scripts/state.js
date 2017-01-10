@@ -14,8 +14,7 @@ define(['render'], function(render){
   }
 
   function wait(){
-    tick();
-    toIdle();
+    toTick();
   }
 
   function feed(){
