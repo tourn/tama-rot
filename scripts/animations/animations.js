@@ -11,6 +11,7 @@ define([
   './play',
   './sleep',
   './spreng',
+  './training',
 ], function(
   beat,
   cuddle,
@@ -23,7 +24,8 @@ define([
   music,
   play,
   sleep,
-  spreng
+  spreng,
+  training
 ){
   return {
     beat: beat,
@@ -37,6 +39,7 @@ define([
 	music: music,
     play: play,
     sleep: sleep,
-    spreng: spreng
+    spreng: spreng,
+	training: training
   }
 });
