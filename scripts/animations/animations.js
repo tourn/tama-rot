@@ -11,6 +11,7 @@ define([
   './play',
   './sleep',
   './spreng',
+  './suicide',
   './train',
   './training',
 ], function(
@@ -26,6 +27,7 @@ define([
   play,
   sleep,
   spreng,
+  suicide,
   train,
   training
 ){
@@ -42,6 +44,7 @@ define([
     play: play,
     sleep: sleep,
     spreng: spreng,
+	suicide: suicide,
 	train: train,
 	training: training
   }
