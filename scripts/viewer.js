@@ -8,12 +8,22 @@ requirejs.config({
 
 requirejs(['render', 'animations/animations'], function(render, animations){
   const list = document.getElementById('animations');
+  list.innerHTML += "<option></option>";
   Object.keys(animations).forEach(function(name){
-    console.log(name);
     list.innerHTML += "<option>"+name+"</option>";
   });
 
   list.onchange = function(){
-    render.animate(this.value);
+    window.sessionStorage.animation = this.value;
+    animate(this.value);
   };
+
+  function animate(name){
+    render.clearAnimation();
+    render.animate(name).then(function(again){ if(again) {animate(name)} });
+  }
+
+  if(window.sessionStorage.animation){
+    animate(window.sessionStorage.animation);
+  }
 });
