@@ -66,7 +66,7 @@ define(['render', 'tama'], function(render, tama){
   }
 
   function idleAnimation(){
-    const animationName = "idle" + getRandomInt(1,2);
+    const animationName = "idle" + getRandomInt(1,3);
     render.animate(animationName).then(idleAnimation).catch(function(){});
   }
 
