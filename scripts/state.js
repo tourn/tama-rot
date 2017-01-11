@@ -44,7 +44,7 @@ define(['render', 'tama'], function(render, tama){
     console.log("+++ANIMATION "+animationName+"+++");
     render.clearAnimation();
     render.clearCommands();
-    render.animate(animationName).then(nextState).catch(function(){});
+    render.animate(animationName).then(nextState);
   }
 
   //UTIL
@@ -67,7 +67,9 @@ define(['render', 'tama'], function(render, tama){
 
   function idleAnimation(){
     const animationName = "idle" + getRandomInt(1,3);
-    render.animate(animationName).then(idleAnimation).catch(function(){});
+    render.animate(animationName).then(function(again){
+      if(again){ idleAnimation(); }
+    });
   }
 
   return {

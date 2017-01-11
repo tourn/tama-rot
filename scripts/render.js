@@ -35,7 +35,7 @@ define(['rot','animations/animations'], function(ROT, animations){
   function drawFrames(frames, i, resolve){
     i = i || 0;
     if(i >= frames.length) {
-      resolve();
+      resolve(true);
       return;
     };
     const frame = frames[i];
@@ -45,16 +45,17 @@ define(['rot','animations/animations'], function(ROT, animations){
 
   function animate(animationName){
     const definition = animations[animationName];
+    if(!definition) { throw "No animation: " + animationName; }
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
-      animationReject = reject;
+      animationReject = resolve;
       drawFrames(definition.flatMap(flattenAnimation), 0, resolve);
     });
   }
 
   function clearAnimation(){
     if(timeout){ clearTimeout(timeout); }
-    if(animationReject){ animationReject("animation cancelled"); }
+    if(animationReject){ animationReject(false); }
   }
 
   function renderState(state){
