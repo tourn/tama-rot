@@ -10,7 +10,7 @@ return [
   { loop: 3, frames: [
     { duration: spreng_duration, image: [
       " (\\_/)",
-      " (_)",
+      " (▲_▲)",
       "|||||||",
     ]},
 
