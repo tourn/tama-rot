@@ -3,6 +3,8 @@ Array.prototype.flatMap = function(lambda) {
 };
 
 define(['rot','animations/animations'], function(ROT, animations){
+  var encoder;
+  var captureTimeout;
   var timeout;
   var display = new ROT.Display({width:20, height:5});
   document.body.appendChild(display.getContainer());
@@ -32,7 +34,7 @@ define(['rot','animations/animations'], function(ROT, animations){
 
   function drawFrames(frames, i){
     i = i || 0;
-    if(i >= frames.length) { i = 0; };
+    if(i >= frames.length) { finishGIF(); return; };
     const frame = frames[i];
     drawImage(frame.image);
     timeout = setTimeout(function(){ drawFrames(frames, i+1); }, frame.duration);
@@ -43,6 +45,39 @@ define(['rot','animations/animations'], function(ROT, animations){
     drawFrames(definition.flatMap(flattenAnimation));
   }
 
-  return { animate: animate };
+  function finishGIF(){
+    clearTimeout(captureTimeout);
+    encoder.finish();
+    var binary_gif = encoder.stream().getData() //notice this is different from the as3gif package!
+    var data_url = 'data:image/gif;base64,'+encode64(binary_gif);
+    document.body.innerHTML += "<img src='" + data_url + "'/>";
+  }
+
+  function recordGIF(definition){
+    const context = document.getElementsByTagName('canvas')[0].getContext("2d");
+    const sampleRateMS = 20;
+    encoder = new GIFEncoder();
+    encoder.setRepeat(0);
+    encoder.setFrameRate(sampleRateMS);
+    encoder.start();
+    if(timeout){ clearTimeout(timeout); }
+    drawFrames(definition.flatMap(flattenAnimation));
+
+    function captureFrame(){
+      captureTimeout = setTimeout(function(){
+        encoder.addFrame(context);
+        captureFrame();
+      },sampleRateMS);
+    }
+    captureFrame();
+  }
+
+
+
+
+  return {
+    animate: animate,
+    recordGIF: recordGIF
+  };
 });
 
