@@ -1,41 +1,59 @@
-define(['render'], function(render){
+define(['render', 'tama'], function(render, tama){
 
-  //TODO: persist state
-  var state = {
-    satiety: 50
-  };
-
+  //STATES
   function toTick(){
-    if(state.satiety > 100){
-      toExplode(); return;
+    console.log("+++TICK+++");
+    const status = tama.tick();
+    if(status.animation){
+      toAnimation(status.animation, toIdle);
+    } else {
+      toIdle();
     }
-    state.satiety -= 10;
-    toIdle();
-  }
-
-  function wait(){
-    toTick();
-  }
-
-  function feed(){
-    state.satiety += 40;
-    toAnimation('feed');
-  }
-
-  function toExplode(){
-    render.clearAnimation();
-    render.renderState(state);
-    render.animate("spreng").then(function(){}).catch(function(){});
-    render.clearCommands();
   }
 
   function toIdle(suppressTick){
+    console.log("+++IDLE+++");
+    if(tama.state.dead){
+      renderDead();
+    } else {
+      renderIdle();
+    }
+  }
+
+  function renderIdle(){
     idleAnimation();
-    render.renderState(state);
+    render.renderState(tama.state);
     render.renderCommands({
-      'feed': feed,
-      'wait': wait
+      'feed': command(tama.actions.feed),
+      'wait': command(tama.actions.wait)
     });
+  }
+
+  function renderDead(){
+    //TODO: dead animation
+    render.renderState(tama.state);
+    render.renderCommands({
+      'be sad': function(){}
+    });
+  }
+
+  function toAnimation(animationName, nextState){
+    console.log("+++ANIMATION "+animationName+"+++");
+    render.clearAnimation();
+    render.clearCommands();
+    render.animate(animationName).then(nextState).catch(function(){});
+  }
+
+  //UTIL
+  function command(cmd){
+    return function(){
+      const status = cmd();
+      if(status.animation){
+        toAnimation(status.animation, toTick);
+      } else {
+        toTick();
+      }
+    }
   }
 
   function getRandomInt(min, max) {
@@ -47,12 +65,6 @@ define(['render'], function(render){
   function idleAnimation(){
     const animationName = "idle" + getRandomInt(1,2);
     render.animate(animationName).then(idleAnimation).catch(function(){});
-  }
-
-  function toAnimation(animationName){
-    render.clearAnimation();
-    render.clearCommands();
-    render.animate(animationName).then(toTick).catch(function(){});
   }
 
   return {
