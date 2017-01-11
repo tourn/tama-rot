@@ -47,25 +47,22 @@ define(['rot','animations/animations'], function(ROT, animations){
 
   function finishGIF(){
     clearTimeout(captureTimeout);
-    encoder.finish();
-    var binary_gif = encoder.stream().getData() //notice this is different from the as3gif package!
-    var data_url = 'data:image/gif;base64,'+encode64(binary_gif);
-    document.body.innerHTML += "<img src='" + data_url + "'/>";
+    encoder.compile(false, function(output){
+      var data_url = (window.webkitURL || window.URL).createObjectURL(output);
+      document.body.innerHTML += "<video src='" + data_url + "' autoplay loop/>";
+    });
   }
 
   function recordGIF(definition){
     const context = document.getElementsByTagName('canvas')[0].getContext("2d");
-    const sampleRateMS = 20;
-    encoder = new GIFEncoder();
-    encoder.setRepeat(0);
-    encoder.setFrameRate(sampleRateMS);
-    encoder.start();
+    const sampleRateMS = 10;
+    encoder = new Whammy.Video(1000/sampleRateMS);
     if(timeout){ clearTimeout(timeout); }
     drawFrames(definition.flatMap(flattenAnimation));
 
     function captureFrame(){
       captureTimeout = setTimeout(function(){
-        encoder.addFrame(context);
+        encoder.add(context);
         captureFrame();
       },sampleRateMS);
     }

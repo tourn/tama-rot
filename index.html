@@ -1,10 +1,7 @@
 <!doctype HTML>
 <head>
   <title>Tiny Little Hans</title>
-  <script type="text/javascript" src="LZWEncoder.js"></script>
-  <script type="text/javascript" src="NeuQuant.js"></script>
-  <script type="text/javascript" src="GIFEncoder.js"></script>
-  <script type="text/javascript" src="b64.js"></script>
+  <script type="text/javascript" src="whammy.js"></script>
   <script data-main="scripts/main" src="scripts/require.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -12,4 +9,5 @@
   <div id="display"/>
   <select id="animations">
   </select>
+  <p>To convert the webm, use: ffmpeg -i pups.webm -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" pups.mp4</p>
 </body>
