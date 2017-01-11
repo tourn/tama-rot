@@ -9,6 +9,10 @@ define(['rot','animations/animations'], function(ROT, animations){
   var display = new ROT.Display({width:20, height:5});
   document.getElementById("display").appendChild(display.getContainer());
 
+  if(document.URL.indexOf('github') !== -1){
+    document.getElementById("status").style.display = 'none';
+  }
+
   function flattenAnimation(frame){
     if(!frame.loop){
       return frame;
