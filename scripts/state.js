@@ -32,11 +32,11 @@ define(['render', 'tama'], function(render, tama){
   }
 
   function renderDead(){
-    //TODO: dead animation
+    deadAnimation();
     render.renderState(tama.state);
     render.renderCommands({
       'be sad': function(){},
-      'reveive': command(tama.actions.revive)
+      'revive': command(tama.actions.revive)
     });
   }
 
@@ -63,6 +63,14 @@ define(['render', 'tama'], function(render, tama){
     min = Math.ceil(min);
     max = Math.floor(max) + 1;
     return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+  //TODO: make random animations by defining an array in animations.js
+  function deadAnimation(){
+    const animationName = "death" + getRandomInt(1,2);
+    render.animate(animationName).then(function(again){
+      if(again){ deadAnimation(); }
+    });
   }
 
   function idleAnimation(){
