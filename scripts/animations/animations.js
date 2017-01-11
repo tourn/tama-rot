@@ -1,6 +1,8 @@
 define([
   './beat',
   './cuddle',
+  './death1',
+  './death2',
   './deathwall',
   './defi',
   './eat',
@@ -20,6 +22,8 @@ define([
 ], function(
   beat,
   cuddle,
+  death1,
+  death2,
   deathwall,
   defi,
   eat,
@@ -40,6 +44,8 @@ define([
   return {
     beat: beat,
     cuddle: cuddle,
+	death1: death1,
+	death2: death2,
 	deathwall: deathwall,
 	defi: defi,
     eat: eat,
