@@ -25,6 +25,8 @@ define(['render', 'tama'], function(render, tama){
     render.renderState(tama.state);
     render.renderCommands({
       'feed': command(tama.actions.feed),
+      'sleep': command(tama.actions.sleep),
+      'play': command(tama.actions.play),
       'wait': command(tama.actions.wait)
     });
   }
@@ -33,7 +35,8 @@ define(['render', 'tama'], function(render, tama){
     //TODO: dead animation
     render.renderState(tama.state);
     render.renderCommands({
-      'be sad': function(){}
+      'be sad': function(){},
+      'reveive': command(tama.actions.revive)
     });
   }
 
