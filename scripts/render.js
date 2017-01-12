@@ -47,14 +47,42 @@ define(['rot','animations/animations'], function(ROT, animations){
     timeout = setTimeout(function(){ drawFrames(frames, i+1, resolve); }, frame.duration);
   }
 
-  function animate(animationName){
-    const definition = animations[animationName];
+  function animate(definition){
     if(!definition) { throw "No animation: " + animationName; }
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
       animationReject = resolve;
       drawFrames(definition.flatMap(flattenAnimation), 0, resolve);
     });
+  }
+
+  // call it like this from outside: animate([10, "death", 5, "doom"]) OR animate("death")
+  function animatePolymorphic(animation){
+    if(animation instanceof Array){
+      animation = pickRandomWeighted(animation);
+    }
+    animation = pickAnimation(animation);
+    return animate(animation);
+  }
+
+  function pickAnimation(animationName){
+    const def = animations[animationName];
+    console.log(def);
+    if(isMulti(def)){
+      return pickRandomWeighted(def.slice(1));
+    } else {
+      return def
+    }
+  }
+
+  //choices looks like [[10, a], [1, b]]
+  function pickRandomWeighted(choices){
+    //TODO implement properly
+    return choices[0][1];
+  }
+
+  function isMulti(animatonDefinition){
+    return animatonDefinition[0] == "wrandom";
   }
 
   function clearAnimation(){
@@ -83,7 +111,7 @@ define(['rot','animations/animations'], function(ROT, animations){
   }
 
   return {
-    animate: animate,
+    animate: animatePolymorphic,
     clearAnimation: clearAnimation,
     renderState: renderState,
     renderCommands: renderCommands,

@@ -10,6 +10,8 @@ requirejs(['render', 'animations/animations'], function(render, animations){
   const list = document.getElementById('animations');
   list.innerHTML += "<option></option>";
   Object.keys(animations).forEach(function(name){
+    //if this is a weighted random array
+    if(animations[name][0] instanceof Array) { return; }
     list.innerHTML += "<option>"+name+"</option>";
   });
 
