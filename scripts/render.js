@@ -2,7 +2,7 @@ Array.prototype.flatMap = function(lambda) {
       return Array.prototype.concat.apply([], this.map(lambda)); 
 };
 
-define(['rot','animations/animations'], function(ROT, animations){
+define(['rot','animations/animations', 'random'], function(ROT, animations, random){
   const id_controls = 'control';
   var timeout;
   var animationReject;
@@ -56,29 +56,30 @@ define(['rot','animations/animations'], function(ROT, animations){
     });
   }
 
+  function animateContinuously(animationName){
+    const definition = resolveAnimation(animationName);
+    animate(animationName).then(function(again){
+      if(again){ animateContinuously(animationName); }
+    });
+  }
+
   // call it like this from outside: animate([10, "death", 5, "doom"]) OR animate("death")
-  function animatePolymorphic(animation){
+  function resolveAnimation(animation){
     if(animation instanceof Array){
-      animation = pickRandomWeighted(animation);
+      animation = random.weighted(animation);
     }
     animation = pickAnimation(animation);
-    return animate(animation);
+    return animation;
   }
 
   function pickAnimation(animationName){
     const def = animations[animationName];
     console.log(def);
     if(isMulti(def)){
-      return pickRandomWeighted(def.slice(1));
+      return random.weighted(def.slice(1));
     } else {
       return def
     }
-  }
-
-  //choices looks like [[10, a], [1, b]]
-  function pickRandomWeighted(choices){
-    //TODO implement properly
-    return choices[0][1];
   }
 
   function isMulti(animatonDefinition){
@@ -111,11 +112,12 @@ define(['rot','animations/animations'], function(ROT, animations){
   }
 
   return {
-    animate: animatePolymorphic,
     clearAnimation: clearAnimation,
     renderState: renderState,
     renderCommands: renderCommands,
-    clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; }
+    clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; },
+    animate: function(name) { return animate(resolveAnimation(name)); },
+    animateContinuously: animateContinuously,
   };
 });
 

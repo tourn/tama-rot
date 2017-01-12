@@ -1,4 +1,4 @@
-define(['render', 'tama'], function(render, tama){
+define(['render', 'tama', 'random'], function(render, tama, random){
 
   //STATES
   function toTick(){
@@ -20,26 +20,6 @@ define(['render', 'tama'], function(render, tama){
     }
   }
 
-  function renderIdle(){
-    idleAnimation();
-    render.renderState(tama.state);
-    render.renderCommands({
-      'feed': command(tama.actions.feed),
-      'sleep': command(tama.actions.sleep),
-      'play': command(tama.actions.play),
-      'wait': command(tama.actions.wait)
-    });
-  }
-
-  function renderDead(){
-    deadAnimation();
-    render.renderState(tama.state);
-    render.renderCommands({
-      'be sad': function(){},
-      'revive': command(tama.actions.revive)
-    });
-  }
-
   function toAnimation(animationName, nextState){
     console.log("+++ANIMATION "+animationName+"+++");
     render.clearAnimation();
@@ -59,26 +39,26 @@ define(['render', 'tama'], function(render, tama){
     }
   }
 
-  function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max) + 1;
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-
-  //TODO: make random animations by defining an array in animations.js
-  function deadAnimation(){
-    const animationName = "death" + getRandomInt(1,2);
-    render.animate(animationName).then(function(again){
-      if(again){ deadAnimation(); }
+  function renderIdle(){
+    render.animateContinuously("idle");
+    render.renderState(tama.state);
+    render.renderCommands({
+      'feed': command(tama.actions.feed),
+      'sleep': command(tama.actions.sleep),
+      'play': command(tama.actions.play),
+      'wait': command(tama.actions.wait)
     });
   }
 
-  function idleAnimation(){
-    const animationName = "idle" + getRandomInt(1,3);
-    render.animate(animationName).then(function(again){
-      if(again){ idleAnimation(); }
+  function renderDead(){
+    render.animateContinuously("death");
+    render.renderState(tama.state);
+    render.renderCommands({
+      'be sad': function(){},
+      'revive': command(tama.actions.revive)
     });
   }
+
 
   return {
     init: toIdle
