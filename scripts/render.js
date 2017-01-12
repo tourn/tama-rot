@@ -58,7 +58,7 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
 
   function animateContinuously(animationName){
     const definition = resolveAnimation(animationName);
-    animate(animationName).then(function(again){
+    animate(definition).then(function(again){
       if(again){ animateContinuously(animationName); }
     });
   }
