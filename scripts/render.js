@@ -74,7 +74,6 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
 
   function pickAnimation(animationName){
     const def = animations[animationName];
-    console.log(def);
     if(isMulti(def)){
       return random.weighted(def.slice(1));
     } else {
