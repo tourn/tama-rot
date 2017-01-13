@@ -1,212 +1,60 @@
 define(function(){
-const duration = 50;
+const duration = 100;
 return [
 	{
-        duration: duration * 50,
+        duration: duration * 10,
         image: [
 			"(\\_/)",
-			"(._.)",
-			"(> <)"
-        ]
-    },
-	{
-        duration: duration * 2,
-        image: [
-			"(\\_/)          ♥",
-			"(._.)",
-			"(> <)"
-        ]
-    },
-	{
-        duration: duration * 2,
-        image: [
-			"(\\_/)",
-			"(._.)          ♥",
+			"(o_o)",
 			"(> <)"
         ]
     },
     {
-        duration: duration * 10,
+        duration: duration * 30,
         image: [
 			"(\\_/)",
 			"(._.)",
-			"(> <)          ♥"
+			"(> <)"
         ]
     },
 	{
-        duration: duration * 10,
-        image: [
-			"(\\_/) ?",
-			"(._.)/",
-			"(> <)          ♥"
-        ]
-    },
-	{
-        duration: duration * 10,
+        duration: duration * 20,
         image: [
 			"(\\_/)",
 			"( ._)",
-			"(> <)          ♥"
+			"(> <)"
         ]
     },
 	{
-        duration: duration * 2,
+        duration: duration,
         image: [
 			"(\\_/)",
-			"( o_)",
-			"(> <)          ♥"
+			"( -_)",
+			"(> <)"
         ]
     },
 	{
-        duration: duration * 15,
+        duration: duration * 20,
         image: [
 			"(\\_/)",
-			"( O_)",
-			"(> <)          ♥"
+			"( ._)",
+			"(> <)"
         ]
     },
 	{
-        duration: duration * 2,
+        duration: duration * 20,
         image: [
 			"(\\_/)",
-			"( ^_)",
-			"( > >          ♥"
+			"(._.)",
+			"(> <)"
         ]
     },
 	{
-        duration: duration * 2,
+        duration: duration * 30,
         image: [
-			"  /)",
-			" ( ^)",
-			"o( >)          ♥"
-        ]
-    },
-	{
-        duration: duration * 3,
-        image: [
-			"   /)",
-			"  ( ^)",
-			" o( >)         ♥"
-        ]
-    },
-	{
-        duration: duration * 3,
-        image: [
-			"    /)",
-			"   ( ^)",
-			"  o( >)        ♥"
-        ]
-    },
-	{
-        duration: duration * 3,
-        image: [
-			"     /)",
-			"    ( ^)",
-			"   o( >)       ♥"
-        ]
-    },
-	{
-        duration: duration,
-        image: [
-			"      /)       █",
-			"     ( ^)",
-			"    o( >)      ♥"
-        ]
-    },
-	{
-        duration: duration,
-        image: [
-			"      /)",
-			"     ( ^)      █",
-			"    o( >)      ♥"
-        ]
-    },
-	{
-        duration: duration,
-        image: [
-			"      /)",
-			"     ( ^)",
-			"    o( >)      █"
-        ]
-    },
-	{
-        duration: duration,
-        image: [
-			"       /)",
-			"      ( ^)",
-			"     o( >)     ▲"
-        ]
-    },
-	{
-        duration: duration,
-        image: [
-			"       /)",
-			"      ( ^)",
-			"     o( >)     _"
-        ]
-    },
-	{
-        duration: duration*2,
-        image: [
-			"       /)",
-			"      ( o)",
-			"     o( >)     _"
-        ]
-    },
-	{
-        duration: duration*10,
-        image: [
-			"       /)",
-			"      ( O)",
-			"     o( >)     _"
-        ]
-    },
-	{
-        duration: duration*20,
-        image: [
-			"       /)  ...",
-			"      ( O)/",
-			"     o( >)     _"
-        ]
-    },
-	{
-        duration: duration*10,
-        image: [
-			"       /)",
-			"      ( .)",
-			"     o( >)     _"
-        ]
-    },
-	{
-        duration: duration*5,
-        image: [
-			"     (\\_/)",
-			"     ( ._)",
-			"     ( > >     _"
-        ]
-    },
-	{
-        duration: duration*5,
-        image: [
-			"     (\\_/)",
-			"     ( ._)",
-			"     (> <)     _"
-        ]
-    },
-	{
-        duration: duration*10,
-        image: [
-			"     (\\_/)",
-			"     (._.)",
-			"     (> <)     _"
-        ]
-    },
-	{
-        duration: duration*30,
-        image: [
-			"     (\\_/)",
-			"     (T_T)",
-			"     (> <)     _"
+			"(\\_/)",
+			"(T_T)",
+			"(> <)"
         ]
     },
 ]
