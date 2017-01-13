@@ -48,7 +48,10 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
   }
 
   function animate(definition){
-    if(!definition) { throw "No animation: " + animationName; }
+    if(!definition) { 
+      console.log("No animation: " + animationName);
+      definition = resolveAnimation("todo");
+    }
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
       animationReject = resolve;
@@ -65,10 +68,15 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
 
   // call it like this from outside: animate([10, "death", 5, "doom"]) OR animate("death")
   function resolveAnimation(animation){
-    if(animation instanceof Array){
-      animation = random.weighted(animation);
+    try{
+      if(animation instanceof Array){
+        animation = random.weighted(animation);
+      }
+      animation = pickAnimation(animation);
+    } catch (e){
+      console.log("No animation: " + animation);
+      animation = pickAnimation("todo");
     }
-    animation = pickAnimation(animation);
     return animation;
   }
 

@@ -18,6 +18,7 @@ define([
   './sleep',
   './spreng',
   './suicide',
+  './todo',
   './train',
   './training',
 ], function(
@@ -40,6 +41,7 @@ define([
   sleep,
   spreng,
   suicide,
+  todo,
   train,
   training
 ){
@@ -58,7 +60,7 @@ define([
     idle1: idle1,
     idle2: idle2,
     idle3: idle3,
-    idle4: idle4,
+    idle4: idle4, //TODO rename
     love: love,
     music: music,
     play: play,
@@ -66,6 +68,14 @@ define([
     spreng: spreng,
     suicide: suicide,
     train: train,
-    training: training
+    training: training,
+    missing: train,
+    todo: todo,
+    stat_satiety_low: ["wrandom", [10, todo]],
+    stat_satiety_high: ["wrandom", [10, idle4]],
+    stat_energy_low: ["wrandom", [10, todo]],
+    stat_energy_high: ["wrandom", [10, todo]],
+    stat_happy_low: ["wrandom", [10, todo]],
+    stat_happy_high: ["wrandom", [10, todo]],
   }
 });
