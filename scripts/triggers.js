@@ -3,7 +3,7 @@ define(['random'], function(random){
     if(state.satiety >= 100 && random.chance(state.satiety - 100)){
       state.dead = true;
       state.satiety = 40;
-      end({ animation: 'spreng' });
+      end({ animation: 'overeatenexplode' });
     }
   }
 
