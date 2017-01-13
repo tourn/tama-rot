@@ -40,7 +40,7 @@ define(['render', 'tama', 'random'], function(render, tama, random){
   }
 
   function renderIdle(){
-    render.animateContinuously("idle");
+    render.animateContinuously(idleAnimationChoices(tama.state));
     render.renderState(tama.state);
     render.renderCommands({
       'feed': command(tama.actions.feed),
@@ -48,6 +48,29 @@ define(['render', 'tama', 'random'], function(render, tama, random){
       'play': command(tama.actions.play),
       'wait': command(tama.actions.wait)
     });
+  }
+
+  function idleAnimationChoices(state){
+    var choices = [[10, "idle"]];
+    choices = choices.concat(statAnimations(state, "satiety"));
+    choices = choices.concat(statAnimations(state, "energy"));
+    choices = choices.concat(statAnimations(state, "happy"));
+    return choices;
+  }
+
+  const statLowThreshold = 20
+  const statHighThreshold = 100 - statLowThreshold;
+
+  function statAnimations(state, statName){
+    return [
+      [calculateWeight(state[statName] - 20), "stat_"+statName+"_low"],
+      [calculateWeight(80 - state[statName]), "stat_"+statName+"_high"]
+    ]
+  }
+
+  function calculateWeight(statValue){
+    if(statValue >= 0) { return 0; }
+    return Math.abs(statValue);
   }
 
   function renderDead(){

@@ -9,7 +9,7 @@ define(function(){
   };
 
   function tick(){
-    if(state.satiety >= 100){
+    if(state.satiety >= 200){
       state.dead = true;
       state.satiety = 40;
       return {
@@ -32,7 +32,7 @@ define(function(){
   }
 
   function feed(){
-    state.satiety += 80;
+    state.satiety += 40;
     return {
       animation: 'feed'
     }
