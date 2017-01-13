@@ -16,6 +16,7 @@ define([
   './love',
   './music',
   './play',
+  './sad1',
   './sleep',
   './spreng',
   './suicide',
@@ -40,6 +41,7 @@ define([
   love,
   music,
   play,
+  sad1,
   sleep,
   spreng,
   suicide,
@@ -67,6 +69,7 @@ define([
     love: love,
     music: music,
     play: play,
+	sad1: sad1,
     sleep: sleep,
     spreng: spreng,
     suicide: suicide,
@@ -78,7 +81,7 @@ define([
     stat_satiety_high: ["wrandom", [10, idle4]],
     stat_energy_low: ["wrandom", [10, todo]],
     stat_energy_high: ["wrandom", [10, todo]],
-    stat_happy_low: ["wrandom", [10, todo]],
+    stat_happy_low: ["wrandom", [10, sad1]],
     stat_happy_high: ["wrandom", [10, happy1]],
   }
 });
