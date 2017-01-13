@@ -7,7 +7,7 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
   const displayWidth = 20;
   var timeout;
   var animationReject;
-  var display = new ROT.Display({width: displayWidth, height:5, fontSize: determineFontSize()});
+  var display = new ROT.Display({width: displayWidth, height:5, fontSize: 15});
   document.getElementById("display").appendChild(display.getContainer());
 
   if(document.URL.indexOf('github') !== -1){
