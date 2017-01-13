@@ -11,8 +11,8 @@
 }
 
 #control button {
-  font-size: 2rem;
-  width: 20rem;
+  font-size: 1.5rem;
+  padding: 0 2rem;
   height: 5rem;
   flex-grow: 1;
 }
