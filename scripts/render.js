@@ -26,6 +26,7 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
   }
 
 
+  //TODO: maybe move this to animations.js and do it on load
   function flattenAnimation(frame){
     if(!frame.loop){
       return frame;
