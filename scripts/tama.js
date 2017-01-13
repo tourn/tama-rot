@@ -1,4 +1,5 @@
 define(function(){
+  const tickStatLoss = 10;
   const defaultState = {
     name: 'Hans',
     satiety: 50,
@@ -24,9 +25,9 @@ define(function(){
     }
 
     function reduceStats(){
-      self.state.satiety -= 10;
-      self.state.energy -= 10;
-      self.state.happy -= 10;
+      self.state.satiety -= tickStatLoss;
+      self.state.energy -= tickStatLoss;
+      self.state.happy -= tickStatLoss;
     }
 
     this.actions = {
@@ -47,6 +48,9 @@ define(function(){
       },
       revive: function(){
         self.state.dead = false;
+        self.state.satiety = 30;
+        self.state.energy = 30;
+        self.state.happy = 30;
         return { animation: 'defi' };
       },
     }
