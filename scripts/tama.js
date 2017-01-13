@@ -9,7 +9,7 @@ define(['triggers'], function(triggers){
   };
 
   function Tama(state){
-    this.state = state || defaultState;
+    this.state = state || JSON.parse(JSON.stringify(defaultState));
     const self = this;
 
     this.tick = function(){
