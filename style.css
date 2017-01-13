@@ -4,3 +4,16 @@
   background: black;
 }
 
+#control {
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+}
+
+#control button {
+  font-size: 2rem;
+  width: 20rem;
+  height: 5rem;
+  flex-grow: 1;
+}
+
