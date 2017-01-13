@@ -86,7 +86,10 @@ define(['render', 'tama', 'random'], function(render, Tama, random){
   }
 
   function init(){
-    var state = JSON.parse(localStorage.tamaState);
+    var state = localStorage.tamaState;
+    if(state){
+      state = JSON.parse(state);
+    }
     tama = new Tama(state);
     toIdle();
   }
