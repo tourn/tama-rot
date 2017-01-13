@@ -8,6 +8,7 @@ define([
   './defi',
   './eat',
   './feed',
+  './happyhigh1',
   './idle1',
   './idle2',
   './idle3',
@@ -31,6 +32,7 @@ define([
   defi,
   eat,
   feed,
+  happyhigh1,
   idle1,
   idle2,
   idle3,
@@ -56,6 +58,7 @@ define([
     defi: defi,
     eat: eat,
     feed: feed,
+	happyhigh1,
     idle: ["wrandom", [10, idle1], [10, idle2], [2, idle3]],
     idle1: idle1,
     idle2: idle2,
@@ -76,6 +79,6 @@ define([
     stat_energy_low: ["wrandom", [10, todo]],
     stat_energy_high: ["wrandom", [10, todo]],
     stat_happy_low: ["wrandom", [10, todo]],
-    stat_happy_high: ["wrandom", [10, todo]],
+    stat_happy_high: ["wrandom", [10, happyhigh1]],
   }
 });
