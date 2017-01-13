@@ -4,14 +4,27 @@ Array.prototype.flatMap = function(lambda) {
 
 define(['rot','animations/animations', 'random'], function(ROT, animations, random){
   const id_controls = 'control';
+  const displayWidth = 20;
   var timeout;
   var animationReject;
-  var display = new ROT.Display({width:20, height:5});
+  var display = new ROT.Display({width: displayWidth, height:5, fontSize: determineFontSize()});
   document.getElementById("display").appendChild(display.getContainer());
 
   if(document.URL.indexOf('github') !== -1){
     document.getElementById("status").style.display = 'none';
   }
+
+  function determineFontSize(){
+    var width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    var size = Math.min(800/displayWidth, width/displayWidth);
+    console.log(size);
+    console.log(width);
+
+    return size;
+  }
+
 
   function flattenAnimation(frame){
     if(!frame.loop){
