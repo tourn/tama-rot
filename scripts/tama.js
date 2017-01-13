@@ -1,4 +1,4 @@
-define(function(){
+define(['triggers'], function(triggers){
   const tickStatLoss = 10;
   const defaultState = {
     name: 'Hans',
@@ -12,16 +12,16 @@ define(function(){
     this.state = state || defaultState;
     const self = this;
 
-    //TODO: this scales badly. Could probably tear it apart with something interceptor-like
     this.tick = function(){
-      if(self.state.satiety >= 200){
-        self.state.dead = true;
-        self.state.satiety = 40;
-        return { animation: 'spreng' };
+      var result = {};
+      var ended = false;
+      for(var i = 0; i < triggers.length; i++){
+        triggers[i](self.state, function(res) { result = res; ended = true; });
+        if(ended){ return result };
       }
 
       reduceStats();
-      return {};
+      return result;
     }
 
     function reduceStats(){

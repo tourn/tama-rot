@@ -16,9 +16,13 @@ define(function(){
     return Math.floor(Math.random() * (max - min)) + min;
   }
 
+  function chance(percentage){
+    return percentage > (Math.random() * 100);
+  }
 
   return {
     weighted: weighted,
+    chance: chance,
     int: intBetween
   }
 
