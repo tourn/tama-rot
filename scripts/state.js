@@ -1,9 +1,12 @@
-define(['render', 'tama', 'random'], function(render, tama, random){
+define(['render', 'tama', 'random'], function(render, Tama, random){
+
+  var tama;
 
   //STATES
   function toTick(){
     console.log("+++TICK+++");
     const status = tama.tick();
+    localStorage.tamaState = JSON.stringify(tama.state);
     if(status.animation){
       toAnimation(status.animation, toIdle);
     } else {
@@ -82,9 +85,14 @@ define(['render', 'tama', 'random'], function(render, tama, random){
     });
   }
 
+  function init(){
+    var state = JSON.parse(localStorage.tamaState);
+    tama = new Tama(state);
+    toIdle();
+  }
 
   return {
-    init: toIdle
+    init: init
   };
 
 });
