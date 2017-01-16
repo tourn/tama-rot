@@ -46,12 +46,22 @@ define(['triggers'], function(triggers){
         self.state.happy += 40;
         return { animation: 'play' };
       },
+			music: function(){
+        self.state.happy += 40;
+        return { animation: 'music' };
+      },
       revive: function(){
         self.state.dead = false;
         self.state.satiety = 30;
         self.state.energy = 30;
         self.state.happy = 30;
         return { animation: 'defi' };
+      },
+			training: function(){
+        self.state.happy += 20;
+				self.state.satiety -= 20;
+				self.state.energy -= 20;
+        return { animation: 'training' };
       },
     }
   }
