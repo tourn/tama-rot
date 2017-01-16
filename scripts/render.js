@@ -7,11 +7,24 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
   const displayWidth = 20;
   var timeout;
   var animationReject;
-  var display = new ROT.Display({width: displayWidth, height:5, fontSize: 15});
-  document.getElementById("display").appendChild(display.getContainer());
+  var display;
 
   if(document.URL.indexOf('github') !== -1){
     document.getElementById("status").style.display = 'none';
+  }
+
+  createDisplay();
+
+  function createDisplay(o){
+    var opts = {width: displayWidth, height:5, fontSize: determineFontSize()};
+    Object.assign(opts, o);
+    console.log(opts);
+    display = new ROT.Display(opts);
+    const node = document.getElementById("display");
+    while(node.firstChild){
+      node.removeChild(node.firstChild);
+    }
+    node.appendChild(display.getContainer());
   }
 
   function determineFontSize(){
@@ -39,6 +52,20 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
       }
       return frames;
     }
+  }
+
+  //TODO: maybe move this to animations.js and do it on load
+  function getDimensions(definition){
+    var x = 0;
+    var y = 0;
+    definition.flatMap(flattenAnimation).forEach(function(frame){
+      y = Math.max(y, frame.image.length);
+      frame.image.forEach(function(line){
+        x = Math.max(x, line.length);
+      });
+    });
+
+    return {x: x, y: y};
   }
 
   function drawImage(image){
@@ -136,6 +163,8 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     clearAnimation: clearAnimation,
     renderState: renderState,
     renderCommands: renderCommands,
+    getDimensions: getDimensions,
+    createDisplay: createDisplay,
     clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; },
     animate: function(name) { return animate(resolveAnimation(name)); },
     animateContinuously: animateContinuously,

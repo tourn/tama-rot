@@ -21,6 +21,10 @@ requirejs(['render', 'animations/animations'], function(render, animations){
   };
 
   function recordGIF(animationName){
+    const dim = render.getDimensions(animations[animationName]);
+    console.log(dim);
+    render.createDisplay({width: dim.x, height: dim.y, fontSize: 15});
+
     const context = document.getElementsByTagName('canvas')[0].getContext("2d");
     const sampleRateMS = 20;
     encoder = new GIFEncoder();
