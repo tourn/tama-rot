@@ -18,7 +18,7 @@ const animations = [
   'music1',
 	'music2',
   'overeatenexplode',
-  'play',
+  'play1',
 	'play2',
   'sad1',
   'sad2',
@@ -53,6 +53,7 @@ define(animations.map(function(path){ return './' + path;}), function(){
   return Object.assign(exports, {
     death: multi([[10, "death1"], [10, "death2"], [1, "death3"]]),
     idle: multi([[10, "idle1"], [10, "idle2"], [2, "idle3"]]),
+		play: multi([[10, "play1"], [5, "play2"]]),
 		music: multi([[10, "music1"], [5, "music2"]]),
     TODO: TODO,
     stat_satiety_low: multi([[10, "hungry1"]]),
