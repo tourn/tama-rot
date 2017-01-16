@@ -19,6 +19,7 @@ const animations = [
 	'music2',
   'overeatenexplode',
   'play',
+	'play2',
   'sad1',
   'sad2',
   'sad3',
