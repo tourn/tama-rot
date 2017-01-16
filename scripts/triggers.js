@@ -10,7 +10,7 @@ define(['random'], function(random){
   function hungerDeath(state, end){
     if(state.satiety <= 0){
       state.dead = true;
-      end({ animation: 'TODO' });
+      end({ animation: 'starved' });
     }
   }
 
