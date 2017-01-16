@@ -2,20 +2,20 @@ define(function(){
 const duration = 1000;
 return [
 	{
-        duration: duration * 3,
-        image: [
+    duration: duration * 3,
+    image: [
 			"(\\_/)",
 			"(/_\\)",
 			"(> <)"
-        ]
-    },
-    {
-        duration: duration,
-        image: [
+    ]
+  },
+  {
+    duration: duration,
+    image: [
 			"(\\_/) zzz?",
 			"(/_\\)/",
 			"(> <)"
-        ]
-    },
+    ]
+  },
 ]
 });
