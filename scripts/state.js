@@ -49,6 +49,7 @@ define(['render', 'tama', 'random'], function(render, Tama, random){
       'feed': command(tama.actions.feed),
       'sleep': command(tama.actions.sleep),
       'play': command(tama.actions.play),
+			'music': command(tama.actions.music),
       'wait': command(tama.actions.wait)
     });
   }

@@ -46,6 +46,10 @@ define(['triggers'], function(triggers){
         self.state.happy += 40;
         return { animation: 'play' };
       },
+			music: function(){
+        self.state.happy += 40;
+        return { animation: 'music' };
+      },
       revive: function(){
         self.state.dead = false;
         self.state.satiety = 30;
