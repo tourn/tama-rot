@@ -202,22 +202,22 @@ return [
 		"(> <)"
   ]},
 	{ duration: duration*2, image: [
-		"(\\_/) landside",
+		"(\\_/) landslide",
 		"(^o^)/",
 		"(> <)"
   ]},
 	{ duration: duration, image: [
-		"(\\_/) landside",
+		"(\\_/) landslide",
 		"(^.^)/",
 		"(> <)"
   ]},
 	{ duration: duration*2, image: [
-		"(\\_/) landside",
+		"(\\_/) landslide",
 		"(^o^)/",
 		"(> <)"
   ]},
 	{ duration: duration, image: [
-		"(\\_/) landside",
+		"(\\_/) landslide",
 		"(^.^)/",
 		"(> <)"
   ]},
