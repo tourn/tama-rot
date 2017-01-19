@@ -55,23 +55,24 @@ define(['render', 'tama', 'random'], function(render, Tama, random){
     });
   }
 
+
   function idleAnimationChoices(state){
+    const statLowThreshold = 20
+    const statHighThreshold = 100 - statLowThreshold;
+    function statAnimations(state, statName){
+      return [
+        [calculateWeight(state[statName] - 20), "stat_"+statName+"_low"],
+        [calculateWeight(80 - state[statName]), "stat_"+statName+"_high"]
+      ]
+    }
+
     var choices = [[10, "idle"]];
     choices = choices.concat(statAnimations(state, "satiety"));
-    choices = choices.concat(statAnimations(state, "energy"));
     choices = choices.concat(statAnimations(state, "happy"));
+    choices.push([calculateWeight(state["energy"] - 20), "stat_energy_low"])
     return choices;
   }
 
-  const statLowThreshold = 20
-  const statHighThreshold = 100 - statLowThreshold;
-
-  function statAnimations(state, statName){
-    return [
-      [calculateWeight(state[statName] - 20), "stat_"+statName+"_low"],
-      [calculateWeight(80 - state[statName]), "stat_"+statName+"_high"]
-    ]
-  }
 
   function calculateWeight(statValue){
     if(statValue >= 0) { return 0; }
