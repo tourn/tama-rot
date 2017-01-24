@@ -46,7 +46,11 @@ define(['render', 'tama', 'random', 'minigames'], function(render, Tama, random,
     return function(){
       render.clearAnimation();
       render.clearCommands();
+      render.clearInfo();
       game.run().then(function(success){
+        render.clearAnimation();
+        render.clearCommands();
+        render.clearInfo();
         if(success){
           command(cmd)();
         } else {

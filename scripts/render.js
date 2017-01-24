@@ -4,6 +4,7 @@ Array.prototype.flatMap = function(lambda) {
 
 define(['rot','animations/animations', 'random'], function(ROT, animations, random){
   const id_controls = 'control';
+  const id_info = 'info';
   const displayWidth = 20;
   var timeout;
   var animationReject;
@@ -166,6 +167,11 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     });
   }
 
+  function renderInfo(info){
+    const target = document.getElementById(id_info);
+    target.innerHTML += "<p>" + info + "</p>";
+  }
+
   function renderCommands(commands){
     const target = document.getElementById(id_controls);
     target.innerHTML = "";
@@ -182,9 +188,11 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     clearAnimation: clearAnimation,
     renderState: renderState,
     renderCommands: renderCommands,
+    renderInfo: renderInfo,
     getDimensions: getDimensions,
     createDisplay: createDisplay,
     clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; },
+    clearInfo: function(){ document.getElementById(id_info).innerHTML = ""; },
     animate: function(name) { return animate(resolveAnimation(name)); },
     animateContinuously: animateContinuously,
     getFrames: getFrames,

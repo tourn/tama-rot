@@ -13,6 +13,8 @@ define(['render', 'rot'], function(render, ROT){
         document.body.addEventListener("touchstart", handleTouchstart);
         document.body.addEventListener("touchmove", handleTouchmove);
 
+        render.renderInfo("Swipe or use up and down arrows to charge the defi!");
+
         function handleKeys(e){
           if(e.keyCode == ROT.VK_UP){
             trigger({dir: 'up'});
