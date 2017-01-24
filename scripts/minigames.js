@@ -4,7 +4,6 @@ define(['render', 'rot'], function(render, ROT){
     const frames = render.getFrames("todo");
 
     function run(){
-      render.clearAnimation(); //TODO: move up
       render.renderFrame(frames[0]);
 
 
@@ -55,6 +54,7 @@ define(['render', 'rot'], function(render, ROT){
             }
           }
           if(progress >= 10){
+            //FIXME: stop tracking swiping if done
             end();
           }
         }
