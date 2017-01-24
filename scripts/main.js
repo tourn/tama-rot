@@ -1,4 +1,7 @@
 requirejs.config({
+  paths: {
+    'hammer': 'lib/hammer.min'
+  },
   shim: {
     'rot': {
       exports: 'ROT'

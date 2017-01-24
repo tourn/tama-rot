@@ -6,24 +6,44 @@ define(['render', 'rot'], function(render, ROT){
     function run(){
       render.clearAnimation(); //TODO: move up
       render.renderFrame(frames[0]);
+
+
       return new Promise(function(resolve){
         document.body.addEventListener("keydown", handleKeys);
-        document.body.addEventListener("keydown", handleKeys);
+        document.body.addEventListener("touchstart", handleTouchstart);
+        document.body.addEventListener("touchmove", handleTouchmove);
 
         function handleKeys(e){
-          if(e.keyCode == ROT.VK_LEFT){
-            trigger({dir: 'left'});
+          if(e.keyCode == ROT.VK_UP){
+            trigger({dir: 'up'});
           }
-          if(e.keyCode == ROT.VK_RIGHT){
-            trigger({dir: 'right'});
+          if(e.keyCode == ROT.VK_DOWN){
+            trigger({dir: 'down'});
           }
         }
 
-        function handleTouch(e){
+        var init;
+
+        function handleTouchstart(e){
+          console.log("TOUCH START");
+          init = e.changedTouches[0].screenY;
+        }
+
+        function handleTouchmove(e){
+          const current = e.changedTouches[0].screenY;
+          const difference = init - current
+          console.log("DIFFERENCE: " + difference);
+          if(difference >= 100){
+            init = current;
+            trigger({dir: 'up'});
+          } else if (difference <= -100){
+            init = current;
+            trigger({dir: 'down'});
+          }
         }
 
         function trigger(opts){
-          if(opts.dir === 'left'){
+          if(opts.dir === 'up'){
             if(progress % 2 == 1){
                 progress += 1
                 render.renderFrame(frames[0]);
