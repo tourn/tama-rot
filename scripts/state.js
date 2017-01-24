@@ -1,4 +1,4 @@
-define(['render', 'tama', 'random'], function(render, Tama, random){
+define(['render', 'tama', 'random', 'minigames'], function(render, Tama, random, minigames){
 
   var tama;
 
@@ -39,6 +39,18 @@ define(['render', 'tama', 'random'], function(render, Tama, random){
       } else {
         toTick();
       }
+    }
+  }
+
+  function minigame(game, cmd){
+    return function(){
+      game.run().then(function(success){
+        if(success){
+          command(cmd)();
+        } else {
+          console.log("BOO");
+        }
+      });
     }
   }
 
@@ -84,7 +96,8 @@ define(['render', 'tama', 'random'], function(render, Tama, random){
     render.renderState(tama.state);
     render.renderCommands({
       'be sad': function(){},
-      'revive': command(tama.actions.revive)
+      'revive': command(tama.actions.revive),
+      'defi': minigame(minigames.defi, tama.actions.revive)
     });
   }
 

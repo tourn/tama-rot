@@ -102,12 +102,12 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
 
   function animate(definition){
     if(!definition) { 
-      console.log("No animation: " + animationName);
+      console.log("No animation: " + animationName); //FIXME: animationName isnt defined?
       definition = resolveAnimation("todo");
     }
     if(timeout){ clearTimeout(timeout); }
     return new Promise(function(resolve, reject){
-      animationReject = resolve;
+      animationReject = resolve; //FIXME naming
       drawFrames(definition.flatMap(flattenAnimation), 0, resolve);
     });
   }
@@ -146,6 +146,11 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     return animatonDefinition[0] == "wrandom";
   }
 
+  function getFrames(animationName){
+    const definition = resolveAnimation(animationName);
+    return definition.flatMap(flattenAnimation);
+  }
+
   function clearAnimation(){
     if(timeout){ clearTimeout(timeout); }
     if(animationReject){ animationReject(false); }
@@ -180,6 +185,8 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     clearCommands: function(){ document.getElementById(id_controls).innerHTML = ""; },
     animate: function(name) { return animate(resolveAnimation(name)); },
     animateContinuously: animateContinuously,
+    getFrames: getFrames,
+    renderFrame: function(frame){ drawImage(frame.image); }
   };
 });
 
