@@ -54,7 +54,7 @@ define(animations.map(function(path){ return './' + path;}), function(){
   }
 
   return Object.assign(exports, {
-    death: multi([[10, "death1"], [10, "death2"], [1, "death3"]]),
+    death: multi([[10, "death1"], [3, "death2"], [1, "death3"]]),
     idle: multi([[20, "idle1"], [20, "idle2"], [2, "idle3"], [2, "idle5"]]),
 		play: multi([[10, "play1"], [5, "play2"]]),
 		music: multi([[10, "music1"], [5, "music2"]]),

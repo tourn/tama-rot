@@ -16,7 +16,9 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
   createDisplay();
 
   function createDisplay(o){
-    var opts = {width: displayWidth, height:5, fontSize: determineFontSize()};
+    var opts = {width: displayWidth, height:5, fontSize: determineFontSize(),
+      fg: 'black', bg: 'white'
+    };
     Object.assign(opts, o);
     console.log(opts);
     display = new ROT.Display(opts);
