@@ -77,6 +77,15 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     }
   }
 
+  function drawText(image, text){
+    for(var i = 0; i < image.length; i++){
+      const index = image[i].indexOf('%s');
+      if(index !== -1){
+        display.drawText(index,i,text);
+      }
+    }
+  }
+
   function drawFrames(frames, i, resolve){
     i = i || 0;
     if(i >= frames.length) {
@@ -85,6 +94,9 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     };
     const frame = frames[i];
     drawImage(frame.image);
+    if(frame.text){
+      drawText(frame.image, frame.text);
+    }
     timeout = setTimeout(function(){ drawFrames(frames, i+1, resolve); }, frame.duration);
   }
 

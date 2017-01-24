@@ -58,11 +58,9 @@ define(animations.map(function(path){ return './' + path;}), function(){
 		play: multi([[10, "play1"], [5, "play2"]]),
 		music: multi([[10, "music1"], [5, "music2"]]),
 		starved: multi([[10, "starved1"]]),
-    TODO: TODO,
     stat_satiety_low: multi([[10, "hungry1"]]),
     stat_satiety_high: multi([[10, "idle4"]]),
     stat_energy_low: multi([[10, "sleepy1"]]),
-    stat_energy_high: TODO,
     stat_happy_low: multi([[10, "sad1"], [5, "sad2"], [1, "sad3"]]),
     stat_happy_high: multi([[10, "happy1"]]),
   });
