@@ -6,7 +6,7 @@ const animations = [
   'death3',
   'deathwall',
   'defi',
-	'defiaction',
+	'action_defi',
   'eat',
   'feed',
   'happy1',
