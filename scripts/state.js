@@ -97,9 +97,8 @@ define(['render', 'tama', 'random', 'minigames'], function(render, Tama, random,
     render.animateContinuously("death");
     render.renderState(tama.state);
     render.renderCommands({
-      'be sad': function(){},
-      'revive': command(tama.actions.revive),
-      'defi': minigame(minigames.defi, tama.actions.revive)
+      'be sad': function(){ toAnimation("death2", toIdle) },
+      'revive': minigame(minigames.defi, tama.actions.revive)
     });
   }
 

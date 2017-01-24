@@ -1,13 +1,14 @@
 define(['render', 'rot'], function(render, ROT){
   function defi(){
-    var progress = 0;
-    const frames = render.getFrames("todo");
+    const frames = render.getFrames("action_defi");
 
     function run(){
       render.renderFrame(frames[0]);
 
 
       return new Promise(function(resolve){
+        var progress = 0;
+
         document.body.addEventListener("keydown", handleKeys);
         document.body.addEventListener("touchstart", handleTouchstart);
         document.body.addEventListener("touchmove", handleTouchmove);
@@ -24,14 +25,12 @@ define(['render', 'rot'], function(render, ROT){
         var init;
 
         function handleTouchstart(e){
-          console.log("TOUCH START");
           init = e.changedTouches[0].screenY;
         }
 
         function handleTouchmove(e){
           const current = e.changedTouches[0].screenY;
           const difference = init - current
-          console.log("DIFFERENCE: " + difference);
           if(difference >= 100){
             init = current;
             trigger({dir: 'up'});
