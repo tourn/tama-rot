@@ -176,10 +176,14 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     const target = document.getElementById(id_controls);
     target.innerHTML = "";
     Object.keys(commands).forEach(function(key){
+      const div = document.createElement("div");
+      div.className = "pure-u-1 pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-8"
       const button = document.createElement("button");
       button.innerHTML = key;
+      button.className = "pure-button"
       button.onclick = commands[key];
-      target.appendChild(button);
+      div.appendChild(button)
+      target.appendChild(div);
     });
 
   }

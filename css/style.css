@@ -1,19 +1,36 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
 #display {
   text-align: center;
   width: 100%;
   background: white;
 }
 
+/*
 #control {
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
 }
+*/
 
-#control button {
-  font-size: 1.5rem;
-  padding: 0 2rem;
-  height: 5rem;
-  flex-grow: 1;
+#info p{
+  background-color: #E6E6E6;
+  padding: 0.25rem 0;
+  font-size: 125%;
+  text-align:center;
 }
 
+#control button {
+  font-size: 200%;
+  padding: 0 2rem;
+  height: 5rem;
+  width: 100%;
+}
+
+*/
