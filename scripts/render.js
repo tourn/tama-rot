@@ -177,7 +177,7 @@ define(['rot','animations/animations', 'random'], function(ROT, animations, rand
     target.innerHTML = "";
     Object.keys(commands).forEach(function(key){
       const div = document.createElement("div");
-      div.className = "pure-u-1 pure-u-sm-1-2 pure-u-md-1-4 pure-u-lg-1-8"
+      div.className = "pure-u-1-3 pure-u-sm-1-5 pure-u-md-1-6 pure-u-lg-1-8 "
       const button = document.createElement("button");
       button.innerHTML = key;
       button.className = "pure-button"
