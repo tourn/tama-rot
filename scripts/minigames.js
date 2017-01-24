@@ -60,6 +60,8 @@ define(['render', 'rot'], function(render, ROT){
 
         function end(){
           document.body.removeEventListener("keydown", handleKeys);
+          document.body.removeEventListener("touchstart", handleTouchstart);
+          document.body.removeEventListener("touchmove", handleTouchmove);
           resolve(true);
         }
       });
