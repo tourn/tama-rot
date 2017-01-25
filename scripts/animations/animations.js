@@ -17,6 +17,7 @@ const animations = [
   'idle4', //TODO: rename
 	'idle5',
   'love',
+	'loveshower',
   'music1',
 	'music2',
   'overeatenexplode',
