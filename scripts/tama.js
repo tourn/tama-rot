@@ -50,6 +50,12 @@ define(['triggers'], function(triggers){
         self.state.happy += 40;
         return { animation: 'music' };
       },
+			love: function(){
+        self.state.happy += 50;
+				self.state.energy -= 10;
+				self.state.satiety -= 10;
+        return { animation: 'love' };
+      },
       revive: function(){
         self.state.dead = false;
         self.state.satiety = 30;

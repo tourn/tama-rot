@@ -68,6 +68,7 @@ define(['render', 'tama', 'random', 'minigames'], function(render, Tama, random,
       'sleep': command(tama.actions.sleep),
       'play': command(tama.actions.play),
 			'music': command(tama.actions.music),
+			'love': command(tama.actions.love),
 			'training': command(tama.actions.training),
       'wait': command(tama.actions.wait)
     });
